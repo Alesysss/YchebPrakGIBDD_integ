@@ -1,0 +1,1120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище GIBDDmodel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adres">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Pocht_Ind" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Polni_Adres" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Avtomobil">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="VIN_nomer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="God" Type="int" Nullable="false" />
+          <Property Name="Ves" Type="int" Nullable="false" />
+          <Property Name="Cvet_ID" Type="int" Nullable="false" />
+          <Property Name="Tip_Dvigatelia_ID" Type="int" Nullable="false" />
+          <Property Name="Privod_ID" Type="int" Nullable="false" />
+          <Property Name="Cod_Regiona_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Code_Regiona">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nazvanie_EN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazvanie_RU" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code_sybiecta" Type="int" />
+          <Property Name="Cod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OKATO_cod" Type="nvarchar" MaxLength="50" />
+          <Property Name="ISO" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cvet_Mashini">
+          <Key>
+            <PropertyRef Name="Nomer_Cveta" />
+          </Key>
+          <Property Name="Nomer_Cveta" Type="int" Nullable="false" />
+          <Property Name="Kod_Cveta" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazvanie_RU" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazvanie_Cveta_RU" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Metalic" Type="int" />
+          <Property Name="Nazvanie_EN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazvanie_Cveta_EN" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategoria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategoria_Voditel">
+          <Key>
+            <PropertyRef Name="Kategoria_ID" />
+            <PropertyRef Name="VY_ID" />
+          </Key>
+          <Property Name="Kategoria_ID" Type="int" Nullable="false" />
+          <Property Name="VY_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mesto_raboti">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Kompania" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dolznost" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Privod">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shtrafi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="VY_ID" Type="int" Nullable="false" />
+          <Property Name="Avtomobil_ID" Type="int" Nullable="false" />
+          <Property Name="Statys_ID" Type="int" Nullable="false" />
+          <Property Name="Symma" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statys_Shtrafa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statys_VY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tip_Dvigatelia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Tip_EN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tip_RU" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Parol" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Voditel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Imia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Familia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vtoroe_Imia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Seria_pasporta" Type="int" Nullable="false" />
+          <Property Name="Nomer_Pasporta" Type="int" Nullable="false" />
+          <Property Name="Adres_prop_ID" Type="int" Nullable="false" />
+          <Property Name="Adres_proziv_ID" Type="int" Nullable="false" />
+          <Property Name="Mesto_raboti_ID" Type="int" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pochta" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Foto" Type="nvarchar" MaxLength="255" />
+          <Property Name="Opisanie" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Voditelskoe_ydostoverenie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Data_polych" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Data_okonch" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Voditel_ID" Type="int" Nullable="false" />
+          <Property Name="Seria" Type="int" Nullable="false" />
+          <Property Name="Nomer" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VY_Istoria_Statysa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Statys_VY_ID" Type="int" Nullable="false" />
+          <Property Name="VY_ID" Type="int" Nullable="false" />
+          <Property Name="Data_smeni_statysa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kommentariy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Avtomobil_Code_Regiona">
+          <End Role="Code_Regiona" Type="Self.Code_Regiona" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Avtomobil" Type="Self.Avtomobil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Code_Regiona">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avtomobil">
+              <PropertyRef Name="Cod_Regiona_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avtomobil_Cvet_Mashini">
+          <End Role="Cvet_Mashini" Type="Self.Cvet_Mashini" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Avtomobil" Type="Self.Avtomobil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cvet_Mashini">
+              <PropertyRef Name="Nomer_Cveta" />
+            </Principal>
+            <Dependent Role="Avtomobil">
+              <PropertyRef Name="Cvet_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avtomobil_Privod">
+          <End Role="Privod" Type="Self.Privod" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Avtomobil" Type="Self.Avtomobil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privod">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avtomobil">
+              <PropertyRef Name="Privod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avtomobil_Tip_Dvigatelia">
+          <End Role="Tip_Dvigatelia" Type="Self.Tip_Dvigatelia" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Avtomobil" Type="Self.Avtomobil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Dvigatelia">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avtomobil">
+              <PropertyRef Name="Tip_Dvigatelia_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kategoria_Voditel_Kategoria">
+          <End Role="Kategoria" Type="Self.Kategoria" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kategoria_Voditel" Type="Self.Kategoria_Voditel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoria">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kategoria_Voditel">
+              <PropertyRef Name="Kategoria_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kategoria_Voditel_Voditelskoe_ydostoverenie">
+          <End Role="Voditelskoe_ydostoverenie" Type="Self.Voditelskoe_ydostoverenie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kategoria_Voditel" Type="Self.Kategoria_Voditel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voditelskoe_ydostoverenie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kategoria_Voditel">
+              <PropertyRef Name="VY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shtrafi_Avtomobil">
+          <End Role="Avtomobil" Type="Self.Avtomobil" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Shtrafi" Type="Self.Shtrafi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Avtomobil">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Shtrafi">
+              <PropertyRef Name="Avtomobil_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shtrafi_Statys_Shtrafa">
+          <End Role="Statys_Shtrafa" Type="Self.Statys_Shtrafa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Shtrafi" Type="Self.Shtrafi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statys_Shtrafa">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Shtrafi">
+              <PropertyRef Name="Statys_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shtrafi_Voditelskoe_ydostoverenie">
+          <End Role="Voditelskoe_ydostoverenie" Type="Self.Voditelskoe_ydostoverenie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Shtrafi" Type="Self.Shtrafi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voditelskoe_ydostoverenie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Shtrafi">
+              <PropertyRef Name="VY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voditel_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="1" />
+          <End Role="Voditel" Type="Self.Voditel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Voditel">
+              <PropertyRef Name="Adres_prop_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voditel_Adres1">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="1" />
+          <End Role="Voditel" Type="Self.Voditel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Voditel">
+              <PropertyRef Name="Adres_proziv_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voditel_Mesto_raboti">
+          <End Role="Mesto_raboti" Type="Self.Mesto_raboti" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Voditel" Type="Self.Voditel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesto_raboti">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Voditel">
+              <PropertyRef Name="Mesto_raboti_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voditelskoe_ydostoverenie_Voditel">
+          <End Role="Voditel" Type="Self.Voditel" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Voditelskoe_ydostoverenie" Type="Self.Voditelskoe_ydostoverenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voditel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Voditelskoe_ydostoverenie">
+              <PropertyRef Name="Voditel_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VY_Istoria_Statysa_Statys_VY">
+          <End Role="Statys_VY" Type="Self.Statys_VY" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VY_Istoria_Statysa" Type="Self.VY_Istoria_Statysa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statys_VY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VY_Istoria_Statysa">
+              <PropertyRef Name="Statys_VY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VY_Istoria_Statysa_Voditelskoe_ydostoverenie">
+          <End Role="Voditelskoe_ydostoverenie" Type="Self.Voditelskoe_ydostoverenie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VY_Istoria_Statysa" Type="Self.VY_Istoria_Statysa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voditelskoe_ydostoverenie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VY_Istoria_Statysa">
+              <PropertyRef Name="VY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище GIBDDmodelContainer">
+          <EntitySet Name="Adres" EntityType="Self.Adres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Avtomobil" EntityType="Self.Avtomobil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Code_Regiona" EntityType="Self.Code_Regiona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cvet_Mashini" EntityType="Self.Cvet_Mashini" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategoria" EntityType="Self.Kategoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategoria_Voditel" EntityType="Self.Kategoria_Voditel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesto_raboti" EntityType="Self.Mesto_raboti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privod" EntityType="Self.Privod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shtrafi" EntityType="Self.Shtrafi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statys_Shtrafa" EntityType="Self.Statys_Shtrafa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statys_VY" EntityType="Self.Statys_VY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip_Dvigatelia" EntityType="Self.Tip_Dvigatelia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voditel" EntityType="Self.Voditel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voditelskoe_ydostoverenie" EntityType="Self.Voditelskoe_ydostoverenie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VY_Istoria_Statysa" EntityType="Self.VY_Istoria_Statysa" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Avtomobil_Code_Regiona" Association="Self.FK_Avtomobil_Code_Regiona">
+            <End Role="Code_Regiona" EntitySet="Code_Regiona" />
+            <End Role="Avtomobil" EntitySet="Avtomobil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avtomobil_Cvet_Mashini" Association="Self.FK_Avtomobil_Cvet_Mashini">
+            <End Role="Cvet_Mashini" EntitySet="Cvet_Mashini" />
+            <End Role="Avtomobil" EntitySet="Avtomobil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avtomobil_Privod" Association="Self.FK_Avtomobil_Privod">
+            <End Role="Privod" EntitySet="Privod" />
+            <End Role="Avtomobil" EntitySet="Avtomobil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avtomobil_Tip_Dvigatelia" Association="Self.FK_Avtomobil_Tip_Dvigatelia">
+            <End Role="Tip_Dvigatelia" EntitySet="Tip_Dvigatelia" />
+            <End Role="Avtomobil" EntitySet="Avtomobil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kategoria_Voditel_Kategoria" Association="Self.FK_Kategoria_Voditel_Kategoria">
+            <End Role="Kategoria" EntitySet="Kategoria" />
+            <End Role="Kategoria_Voditel" EntitySet="Kategoria_Voditel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kategoria_Voditel_Voditelskoe_ydostoverenie" Association="Self.FK_Kategoria_Voditel_Voditelskoe_ydostoverenie">
+            <End Role="Voditelskoe_ydostoverenie" EntitySet="Voditelskoe_ydostoverenie" />
+            <End Role="Kategoria_Voditel" EntitySet="Kategoria_Voditel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shtrafi_Avtomobil" Association="Self.FK_Shtrafi_Avtomobil">
+            <End Role="Avtomobil" EntitySet="Avtomobil" />
+            <End Role="Shtrafi" EntitySet="Shtrafi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shtrafi_Statys_Shtrafa" Association="Self.FK_Shtrafi_Statys_Shtrafa">
+            <End Role="Statys_Shtrafa" EntitySet="Statys_Shtrafa" />
+            <End Role="Shtrafi" EntitySet="Shtrafi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shtrafi_Voditelskoe_ydostoverenie" Association="Self.FK_Shtrafi_Voditelskoe_ydostoverenie">
+            <End Role="Voditelskoe_ydostoverenie" EntitySet="Voditelskoe_ydostoverenie" />
+            <End Role="Shtrafi" EntitySet="Shtrafi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voditel_Adres" Association="Self.FK_Voditel_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="Voditel" EntitySet="Voditel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voditel_Adres1" Association="Self.FK_Voditel_Adres1">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="Voditel" EntitySet="Voditel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voditel_Mesto_raboti" Association="Self.FK_Voditel_Mesto_raboti">
+            <End Role="Mesto_raboti" EntitySet="Mesto_raboti" />
+            <End Role="Voditel" EntitySet="Voditel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voditelskoe_ydostoverenie_Voditel" Association="Self.FK_Voditelskoe_ydostoverenie_Voditel">
+            <End Role="Voditel" EntitySet="Voditel" />
+            <End Role="Voditelskoe_ydostoverenie" EntitySet="Voditelskoe_ydostoverenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VY_Istoria_Statysa_Statys_VY" Association="Self.FK_VY_Istoria_Statysa_Statys_VY">
+            <End Role="Statys_VY" EntitySet="Statys_VY" />
+            <End Role="VY_Istoria_Statysa" EntitySet="VY_Istoria_Statysa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VY_Istoria_Statysa_Voditelskoe_ydostoverenie" Association="Self.FK_VY_Istoria_Statysa_Voditelskoe_ydostoverenie">
+            <End Role="Voditelskoe_ydostoverenie" EntitySet="Voditelskoe_ydostoverenie" />
+            <End Role="VY_Istoria_Statysa" EntitySet="VY_Istoria_Statysa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GIBDDmodel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adres">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Pocht_Ind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Polni_Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Voditel" Relationship="Self.FK_Voditel_Adres" FromRole="Adres" ToRole="Voditel" />
+          <NavigationProperty Name="Voditel1" Relationship="Self.FK_Voditel_Adres1" FromRole="Adres" ToRole="Voditel" />
+        </EntityType>
+        <EntityType Name="Avtomobil">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="VIN_nomer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="God" Type="Int32" Nullable="false" />
+          <Property Name="Ves" Type="Int32" Nullable="false" />
+          <Property Name="Cvet_ID" Type="Int32" Nullable="false" />
+          <Property Name="Tip_Dvigatelia_ID" Type="Int32" Nullable="false" />
+          <Property Name="Privod_ID" Type="Int32" Nullable="false" />
+          <Property Name="Cod_Regiona_ID" Type="Int32" />
+          <NavigationProperty Name="Code_Regiona" Relationship="Self.FK_Avtomobil_Code_Regiona" FromRole="Avtomobil" ToRole="Code_Regiona" />
+          <NavigationProperty Name="Cvet_Mashini" Relationship="Self.FK_Avtomobil_Cvet_Mashini" FromRole="Avtomobil" ToRole="Cvet_Mashini" />
+          <NavigationProperty Name="Privod" Relationship="Self.FK_Avtomobil_Privod" FromRole="Avtomobil" ToRole="Privod" />
+          <NavigationProperty Name="Tip_Dvigatelia" Relationship="Self.FK_Avtomobil_Tip_Dvigatelia" FromRole="Avtomobil" ToRole="Tip_Dvigatelia" />
+          <NavigationProperty Name="Shtrafi" Relationship="Self.FK_Shtrafi_Avtomobil" FromRole="Avtomobil" ToRole="Shtrafi" />
+        </EntityType>
+        <EntityType Name="Code_Regiona">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nazvanie_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nazvanie_RU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code_sybiecta" Type="Int32" />
+          <Property Name="Cod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OKATO_cod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ISO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Avtomobil" Relationship="Self.FK_Avtomobil_Code_Regiona" FromRole="Code_Regiona" ToRole="Avtomobil" />
+        </EntityType>
+        <EntityType Name="Cvet_Mashini">
+          <Key>
+            <PropertyRef Name="Nomer_Cveta" />
+          </Key>
+          <Property Name="Nomer_Cveta" Type="Int32" Nullable="false" />
+          <Property Name="Kod_Cveta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nazvanie_RU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nazvanie_Cveta_RU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Metalic" Type="Int32" />
+          <Property Name="Nazvanie_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nazvanie_Cveta_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Avtomobil" Relationship="Self.FK_Avtomobil_Cvet_Mashini" FromRole="Cvet_Mashini" ToRole="Avtomobil" />
+        </EntityType>
+        <EntityType Name="Kategoria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Voditelskoe_ydostoverenie" Relationship="Self.Kategoria_Voditel" FromRole="Kategoria" ToRole="Voditelskoe_ydostoverenie" />
+        </EntityType>
+        <EntityType Name="Mesto_raboti">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Kompania" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dolznost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Voditel" Relationship="Self.FK_Voditel_Mesto_raboti" FromRole="Mesto_raboti" ToRole="Voditel" />
+        </EntityType>
+        <EntityType Name="Privod">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Avtomobil" Relationship="Self.FK_Avtomobil_Privod" FromRole="Privod" ToRole="Avtomobil" />
+        </EntityType>
+        <EntityType Name="Shtrafi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="VY_ID" Type="Int32" Nullable="false" />
+          <Property Name="Avtomobil_ID" Type="Int32" Nullable="false" />
+          <Property Name="Statys_ID" Type="Int32" Nullable="false" />
+          <Property Name="Symma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Avtomobil" Relationship="Self.FK_Shtrafi_Avtomobil" FromRole="Shtrafi" ToRole="Avtomobil" />
+          <NavigationProperty Name="Statys_Shtrafa" Relationship="Self.FK_Shtrafi_Statys_Shtrafa" FromRole="Shtrafi" ToRole="Statys_Shtrafa" />
+          <NavigationProperty Name="Voditelskoe_ydostoverenie" Relationship="Self.FK_Shtrafi_Voditelskoe_ydostoverenie" FromRole="Shtrafi" ToRole="Voditelskoe_ydostoverenie" />
+        </EntityType>
+        <EntityType Name="Statys_Shtrafa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Shtrafi" Relationship="Self.FK_Shtrafi_Statys_Shtrafa" FromRole="Statys_Shtrafa" ToRole="Shtrafi" />
+        </EntityType>
+        <EntityType Name="Statys_VY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VY_Istoria_Statysa" Relationship="Self.FK_VY_Istoria_Statysa_Statys_VY" FromRole="Statys_VY" ToRole="VY_Istoria_Statysa" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tip_Dvigatelia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Tip_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tip_RU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Avtomobil" Relationship="Self.FK_Avtomobil_Tip_Dvigatelia" FromRole="Tip_Dvigatelia" ToRole="Avtomobil" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Parol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Voditel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Imia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Vtoroe_Imia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Seria_pasporta" Type="Int32" Nullable="false" />
+          <Property Name="Nomer_Pasporta" Type="Int32" Nullable="false" />
+          <Property Name="Adres_prop_ID" Type="Int32" Nullable="false" />
+          <Property Name="Adres_proziv_ID" Type="Int32" Nullable="false" />
+          <Property Name="Mesto_raboti_ID" Type="Int32" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pochta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Foto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_Voditel_Adres" FromRole="Voditel" ToRole="Adres" />
+          <NavigationProperty Name="Adres1" Relationship="Self.FK_Voditel_Adres1" FromRole="Voditel" ToRole="Adres" />
+          <NavigationProperty Name="Mesto_raboti" Relationship="Self.FK_Voditel_Mesto_raboti" FromRole="Voditel" ToRole="Mesto_raboti" />
+          <NavigationProperty Name="Voditelskoe_ydostoverenie" Relationship="Self.FK_Voditelskoe_ydostoverenie_Voditel" FromRole="Voditel" ToRole="Voditelskoe_ydostoverenie" />
+        </EntityType>
+        <EntityType Name="Voditelskoe_ydostoverenie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Data_polych" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data_okonch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Voditel_ID" Type="Int32" Nullable="false" />
+          <Property Name="Seria" Type="Int32" Nullable="false" />
+          <Property Name="Nomer" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Shtrafi" Relationship="Self.FK_Shtrafi_Voditelskoe_ydostoverenie" FromRole="Voditelskoe_ydostoverenie" ToRole="Shtrafi" />
+          <NavigationProperty Name="Voditel" Relationship="Self.FK_Voditelskoe_ydostoverenie_Voditel" FromRole="Voditelskoe_ydostoverenie" ToRole="Voditel" />
+          <NavigationProperty Name="VY_Istoria_Statysa" Relationship="Self.FK_VY_Istoria_Statysa_Voditelskoe_ydostoverenie" FromRole="Voditelskoe_ydostoverenie" ToRole="VY_Istoria_Statysa" />
+          <NavigationProperty Name="Kategoria" Relationship="Self.Kategoria_Voditel" FromRole="Voditelskoe_ydostoverenie" ToRole="Kategoria" />
+        </EntityType>
+        <EntityType Name="VY_Istoria_Statysa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Statys_VY_ID" Type="Int32" Nullable="false" />
+          <Property Name="VY_ID" Type="Int32" Nullable="false" />
+          <Property Name="Data_smeni_statysa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kommentariy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Statys_VY" Relationship="Self.FK_VY_Istoria_Statysa_Statys_VY" FromRole="VY_Istoria_Statysa" ToRole="Statys_VY" />
+          <NavigationProperty Name="Voditelskoe_ydostoverenie" Relationship="Self.FK_VY_Istoria_Statysa_Voditelskoe_ydostoverenie" FromRole="VY_Istoria_Statysa" ToRole="Voditelskoe_ydostoverenie" />
+        </EntityType>
+        <Association Name="FK_Voditel_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="1" />
+          <End Role="Voditel" Type="Self.Voditel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Voditel">
+              <PropertyRef Name="Adres_prop_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voditel_Adres1">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="1" />
+          <End Role="Voditel" Type="Self.Voditel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Voditel">
+              <PropertyRef Name="Adres_proziv_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avtomobil_Code_Regiona">
+          <End Role="Code_Regiona" Type="Self.Code_Regiona" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Avtomobil" Type="Self.Avtomobil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Code_Regiona">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avtomobil">
+              <PropertyRef Name="Cod_Regiona_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avtomobil_Cvet_Mashini">
+          <End Role="Cvet_Mashini" Type="Self.Cvet_Mashini" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Avtomobil" Type="Self.Avtomobil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cvet_Mashini">
+              <PropertyRef Name="Nomer_Cveta" />
+            </Principal>
+            <Dependent Role="Avtomobil">
+              <PropertyRef Name="Cvet_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avtomobil_Privod">
+          <End Role="Privod" Type="Self.Privod" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Avtomobil" Type="Self.Avtomobil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privod">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avtomobil">
+              <PropertyRef Name="Privod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Avtomobil_Tip_Dvigatelia">
+          <End Role="Tip_Dvigatelia" Type="Self.Tip_Dvigatelia" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Avtomobil" Type="Self.Avtomobil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Dvigatelia">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avtomobil">
+              <PropertyRef Name="Tip_Dvigatelia_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shtrafi_Avtomobil">
+          <End Role="Avtomobil" Type="Self.Avtomobil" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Shtrafi" Type="Self.Shtrafi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Avtomobil">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Shtrafi">
+              <PropertyRef Name="Avtomobil_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voditel_Mesto_raboti">
+          <End Role="Mesto_raboti" Type="Self.Mesto_raboti" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Voditel" Type="Self.Voditel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesto_raboti">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Voditel">
+              <PropertyRef Name="Mesto_raboti_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shtrafi_Statys_Shtrafa">
+          <End Role="Statys_Shtrafa" Type="Self.Statys_Shtrafa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Shtrafi" Type="Self.Shtrafi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statys_Shtrafa">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Shtrafi">
+              <PropertyRef Name="Statys_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shtrafi_Voditelskoe_ydostoverenie">
+          <End Role="Voditelskoe_ydostoverenie" Type="Self.Voditelskoe_ydostoverenie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Shtrafi" Type="Self.Shtrafi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voditelskoe_ydostoverenie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Shtrafi">
+              <PropertyRef Name="VY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VY_Istoria_Statysa_Statys_VY">
+          <End Role="Statys_VY" Type="Self.Statys_VY" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VY_Istoria_Statysa" Type="Self.VY_Istoria_Statysa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statys_VY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VY_Istoria_Statysa">
+              <PropertyRef Name="Statys_VY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voditelskoe_ydostoverenie_Voditel">
+          <End Role="Voditel" Type="Self.Voditel" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Voditelskoe_ydostoverenie" Type="Self.Voditelskoe_ydostoverenie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voditel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Voditelskoe_ydostoverenie">
+              <PropertyRef Name="Voditel_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VY_Istoria_Statysa_Voditelskoe_ydostoverenie">
+          <End Role="Voditelskoe_ydostoverenie" Type="Self.Voditelskoe_ydostoverenie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VY_Istoria_Statysa" Type="Self.VY_Istoria_Statysa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voditelskoe_ydostoverenie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VY_Istoria_Statysa">
+              <PropertyRef Name="VY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Kategoria_Voditel">
+          <End Role="Kategoria" Type="Self.Kategoria" Multiplicity="*" />
+          <End Role="Voditelskoe_ydostoverenie" Type="Self.Voditelskoe_ydostoverenie" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="GIBDDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adres" EntityType="Self.Adres" />
+          <EntitySet Name="Avtomobil" EntityType="Self.Avtomobil" />
+          <EntitySet Name="Code_Regiona" EntityType="Self.Code_Regiona" />
+          <EntitySet Name="Cvet_Mashini" EntityType="Self.Cvet_Mashini" />
+          <EntitySet Name="Kategoria" EntityType="Self.Kategoria" />
+          <EntitySet Name="Mesto_raboti" EntityType="Self.Mesto_raboti" />
+          <EntitySet Name="Privod" EntityType="Self.Privod" />
+          <EntitySet Name="Shtrafi" EntityType="Self.Shtrafi" />
+          <EntitySet Name="Statys_Shtrafa" EntityType="Self.Statys_Shtrafa" />
+          <EntitySet Name="Statys_VY" EntityType="Self.Statys_VY" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tip_Dvigatelia" EntityType="Self.Tip_Dvigatelia" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Voditel" EntityType="Self.Voditel" />
+          <EntitySet Name="Voditelskoe_ydostoverenie" EntityType="Self.Voditelskoe_ydostoverenie" />
+          <EntitySet Name="VY_Istoria_Statysa" EntityType="Self.VY_Istoria_Statysa" />
+          <AssociationSet Name="FK_Voditel_Adres" Association="Self.FK_Voditel_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="Voditel" EntitySet="Voditel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voditel_Adres1" Association="Self.FK_Voditel_Adres1">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="Voditel" EntitySet="Voditel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avtomobil_Code_Regiona" Association="Self.FK_Avtomobil_Code_Regiona">
+            <End Role="Code_Regiona" EntitySet="Code_Regiona" />
+            <End Role="Avtomobil" EntitySet="Avtomobil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avtomobil_Cvet_Mashini" Association="Self.FK_Avtomobil_Cvet_Mashini">
+            <End Role="Cvet_Mashini" EntitySet="Cvet_Mashini" />
+            <End Role="Avtomobil" EntitySet="Avtomobil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avtomobil_Privod" Association="Self.FK_Avtomobil_Privod">
+            <End Role="Privod" EntitySet="Privod" />
+            <End Role="Avtomobil" EntitySet="Avtomobil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Avtomobil_Tip_Dvigatelia" Association="Self.FK_Avtomobil_Tip_Dvigatelia">
+            <End Role="Tip_Dvigatelia" EntitySet="Tip_Dvigatelia" />
+            <End Role="Avtomobil" EntitySet="Avtomobil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shtrafi_Avtomobil" Association="Self.FK_Shtrafi_Avtomobil">
+            <End Role="Avtomobil" EntitySet="Avtomobil" />
+            <End Role="Shtrafi" EntitySet="Shtrafi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voditel_Mesto_raboti" Association="Self.FK_Voditel_Mesto_raboti">
+            <End Role="Mesto_raboti" EntitySet="Mesto_raboti" />
+            <End Role="Voditel" EntitySet="Voditel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shtrafi_Statys_Shtrafa" Association="Self.FK_Shtrafi_Statys_Shtrafa">
+            <End Role="Statys_Shtrafa" EntitySet="Statys_Shtrafa" />
+            <End Role="Shtrafi" EntitySet="Shtrafi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shtrafi_Voditelskoe_ydostoverenie" Association="Self.FK_Shtrafi_Voditelskoe_ydostoverenie">
+            <End Role="Voditelskoe_ydostoverenie" EntitySet="Voditelskoe_ydostoverenie" />
+            <End Role="Shtrafi" EntitySet="Shtrafi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VY_Istoria_Statysa_Statys_VY" Association="Self.FK_VY_Istoria_Statysa_Statys_VY">
+            <End Role="Statys_VY" EntitySet="Statys_VY" />
+            <End Role="VY_Istoria_Statysa" EntitySet="VY_Istoria_Statysa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voditelskoe_ydostoverenie_Voditel" Association="Self.FK_Voditelskoe_ydostoverenie_Voditel">
+            <End Role="Voditel" EntitySet="Voditel" />
+            <End Role="Voditelskoe_ydostoverenie" EntitySet="Voditelskoe_ydostoverenie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VY_Istoria_Statysa_Voditelskoe_ydostoverenie" Association="Self.FK_VY_Istoria_Statysa_Voditelskoe_ydostoverenie">
+            <End Role="Voditelskoe_ydostoverenie" EntitySet="Voditelskoe_ydostoverenie" />
+            <End Role="VY_Istoria_Statysa" EntitySet="VY_Istoria_Statysa" />
+          </AssociationSet>
+          <AssociationSet Name="Kategoria_Voditel" Association="Self.Kategoria_Voditel">
+            <End Role="Kategoria" EntitySet="Kategoria" />
+            <End Role="Voditelskoe_ydostoverenie" EntitySet="Voditelskoe_ydostoverenie" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище GIBDDmodelContainer" CdmEntityContainer="GIBDDEntities">
+          <EntitySetMapping Name="Adres">
+            <EntityTypeMapping TypeName="GIBDDmodel.Adres">
+              <MappingFragment StoreEntitySet="Adres">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Pocht_Ind" ColumnName="Pocht_Ind" />
+                <ScalarProperty Name="Polni_Adres" ColumnName="Polni_Adres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Avtomobil">
+            <EntityTypeMapping TypeName="GIBDDmodel.Avtomobil">
+              <MappingFragment StoreEntitySet="Avtomobil">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VIN_nomer" ColumnName="VIN_nomer" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="God" ColumnName="God" />
+                <ScalarProperty Name="Ves" ColumnName="Ves" />
+                <ScalarProperty Name="Cvet_ID" ColumnName="Cvet_ID" />
+                <ScalarProperty Name="Tip_Dvigatelia_ID" ColumnName="Tip_Dvigatelia_ID" />
+                <ScalarProperty Name="Privod_ID" ColumnName="Privod_ID" />
+                <ScalarProperty Name="Cod_Regiona_ID" ColumnName="Cod_Regiona_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Code_Regiona">
+            <EntityTypeMapping TypeName="GIBDDmodel.Code_Regiona">
+              <MappingFragment StoreEntitySet="Code_Regiona">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nazvanie_EN" ColumnName="Nazvanie_EN" />
+                <ScalarProperty Name="Nazvanie_RU" ColumnName="Nazvanie_RU" />
+                <ScalarProperty Name="Code_sybiecta" ColumnName="Code_sybiecta" />
+                <ScalarProperty Name="Cod" ColumnName="Cod" />
+                <ScalarProperty Name="OKATO_cod" ColumnName="OKATO_cod" />
+                <ScalarProperty Name="ISO" ColumnName="ISO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cvet_Mashini">
+            <EntityTypeMapping TypeName="GIBDDmodel.Cvet_Mashini">
+              <MappingFragment StoreEntitySet="Cvet_Mashini">
+                <ScalarProperty Name="Nomer_Cveta" ColumnName="Nomer_Cveta" />
+                <ScalarProperty Name="Kod_Cveta" ColumnName="Kod_Cveta" />
+                <ScalarProperty Name="Nazvanie_RU" ColumnName="Nazvanie_RU" />
+                <ScalarProperty Name="Nazvanie_Cveta_RU" ColumnName="Nazvanie_Cveta_RU" />
+                <ScalarProperty Name="Metalic" ColumnName="Metalic" />
+                <ScalarProperty Name="Nazvanie_EN" ColumnName="Nazvanie_EN" />
+                <ScalarProperty Name="Nazvanie_Cveta_EN" ColumnName="Nazvanie_Cveta_EN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategoria">
+            <EntityTypeMapping TypeName="GIBDDmodel.Kategoria">
+              <MappingFragment StoreEntitySet="Kategoria">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesto_raboti">
+            <EntityTypeMapping TypeName="GIBDDmodel.Mesto_raboti">
+              <MappingFragment StoreEntitySet="Mesto_raboti">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Kompania" ColumnName="Kompania" />
+                <ScalarProperty Name="Dolznost" ColumnName="Dolznost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Privod">
+            <EntityTypeMapping TypeName="GIBDDmodel.Privod">
+              <MappingFragment StoreEntitySet="Privod">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shtrafi">
+            <EntityTypeMapping TypeName="GIBDDmodel.Shtrafi">
+              <MappingFragment StoreEntitySet="Shtrafi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VY_ID" ColumnName="VY_ID" />
+                <ScalarProperty Name="Avtomobil_ID" ColumnName="Avtomobil_ID" />
+                <ScalarProperty Name="Statys_ID" ColumnName="Statys_ID" />
+                <ScalarProperty Name="Symma" ColumnName="Symma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statys_Shtrafa">
+            <EntityTypeMapping TypeName="GIBDDmodel.Statys_Shtrafa">
+              <MappingFragment StoreEntitySet="Statys_Shtrafa">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statys_VY">
+            <EntityTypeMapping TypeName="GIBDDmodel.Statys_VY">
+              <MappingFragment StoreEntitySet="Statys_VY">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="GIBDDmodel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tip_Dvigatelia">
+            <EntityTypeMapping TypeName="GIBDDmodel.Tip_Dvigatelia">
+              <MappingFragment StoreEntitySet="Tip_Dvigatelia">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tip_EN" ColumnName="Tip_EN" />
+                <ScalarProperty Name="Tip_RU" ColumnName="Tip_RU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="GIBDDmodel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Parol" ColumnName="Parol" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Voditel">
+            <EntityTypeMapping TypeName="GIBDDmodel.Voditel">
+              <MappingFragment StoreEntitySet="Voditel">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Imia" ColumnName="Imia" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Vtoroe_Imia" ColumnName="Vtoroe_Imia" />
+                <ScalarProperty Name="Seria_pasporta" ColumnName="Seria_pasporta" />
+                <ScalarProperty Name="Nomer_Pasporta" ColumnName="Nomer_Pasporta" />
+                <ScalarProperty Name="Adres_prop_ID" ColumnName="Adres_prop_ID" />
+                <ScalarProperty Name="Adres_proziv_ID" ColumnName="Adres_proziv_ID" />
+                <ScalarProperty Name="Mesto_raboti_ID" ColumnName="Mesto_raboti_ID" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Pochta" ColumnName="Pochta" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Voditelskoe_ydostoverenie">
+            <EntityTypeMapping TypeName="GIBDDmodel.Voditelskoe_ydostoverenie">
+              <MappingFragment StoreEntitySet="Voditelskoe_ydostoverenie">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Data_polych" ColumnName="Data_polych" />
+                <ScalarProperty Name="Data_okonch" ColumnName="Data_okonch" />
+                <ScalarProperty Name="Voditel_ID" ColumnName="Voditel_ID" />
+                <ScalarProperty Name="Seria" ColumnName="Seria" />
+                <ScalarProperty Name="Nomer" ColumnName="Nomer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VY_Istoria_Statysa">
+            <EntityTypeMapping TypeName="GIBDDmodel.VY_Istoria_Statysa">
+              <MappingFragment StoreEntitySet="VY_Istoria_Statysa">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Statys_VY_ID" ColumnName="Statys_VY_ID" />
+                <ScalarProperty Name="VY_ID" ColumnName="VY_ID" />
+                <ScalarProperty Name="Data_smeni_statysa" ColumnName="Data_smeni_statysa" />
+                <ScalarProperty Name="Kommentariy" ColumnName="Kommentariy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Kategoria_Voditel" TypeName="GIBDDmodel.Kategoria_Voditel" StoreEntitySet="Kategoria_Voditel">
+            <EndProperty Name="Kategoria">
+              <ScalarProperty Name="ID" ColumnName="Kategoria_ID" />
+            </EndProperty>
+            <EndProperty Name="Voditelskoe_ydostoverenie">
+              <ScalarProperty Name="ID" ColumnName="VY_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
